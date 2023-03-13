@@ -1,0 +1,42 @@
+* { outline: 1px solid red; }
+
+div {outline: 1px solid royalblue}
+
+body {
+  font-family: sans-serif;
+}
+p {
+  line-height: 1.5;
+  margin-bottom: 1em;
+}
+.tower {
+  box-sizing: border-box;
+  width: 44.4%;
+  float: left;
+  height: 100vh;
+  padding: 1em;
+  overflow: auto;
+}
+
+#lemon-tower {
+  background-color: lemonchiffon;
+}
+
+.cell {
+  padding: 1em;
+  cursor: pointer;
+}
+
+.cell:hover {
+  background-color: whitesmoke;
+}
+
+.cell .revealed {
+  height: 2em;
+  font-weight: bold;
+  line-height: 2;
+}
+
+.cell .concealable {
+  display: none;
+}
