@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function(_) {
     cell.addEventListener("click", function(_) {
       const concealable = this.getElementsByClassName("concealable")[0];
       const style = window.getComputedStyle(concealable);
-      concealable.style.display = style.display == "none" ? "block" : "none";
+      concealable.style.display = style.display === "none" ? "block" : "none";
     });
   }
 
@@ -24,44 +24,44 @@ document.addEventListener("DOMContentLoaded", function(_) {
 
   let prevScrollIndex = 0;
 
-  const getHead = () => document.querySelector(".cell:first-child");
-  const getTailBit = () => document.querySelector(".cell:last-child");
+  const grabHead = () => document.querySelector(".cell:first-child");
+  const grabTailBit = () => document.querySelector(".cell:last-child");
 
   const lemonTower = document.querySelector("#lemon-tower");
   lemonTower.addEventListener("scroll", function(_) {
-    
+
     const mymy = this;
     const items = document.querySelector("#cells");
-    let scrollIndex = mymy.scrollTop;
+    let scrolldex = mymy.scrollTop;
 
-    if (scrollIndex > prevScrollIndex) {
-      const tailBit = getTailBit();
+    if (scrolldex > prevScrollIndex) {
+      const tailBit = grabTailBit();
       const itemsHeight = Element.reckonHeight(items);
       const mymyHeight = Element.reckonHeight(mymy);
       const tailTipHeight = Element.reckonHeight(tailBit);
 
       const threshold = itemsHeight - mymyHeight - tailTipHeight;
 
-      if (scrollIndex > threshold) {
-        const head = getHead();
+      if (scrolldex > threshold) {
+        const head = grabHead();
         items.append(head);
         
         const headHeight = Element.reckonHeight(head);
-        scrollIndex -= headHeight;
-        mymy.scrollTop = scrollIndex;
+        scrolldex -= headHeight;
+        mymy.scrollTop = scrolldex;
       }
     } else {
-      const threshold = Element.reckonHeight(getHead());
+      const threshold = Element.reckonHeight(grabHead());
 
-      if (scrollIndex < threshold) {
-        const tailBit = getTailBit();
+      if (scrolldex < threshold) {
+        const tailBit = grabTailBit();
         items.prepend(tailBit);
 
         const tailHeight = Element.reckonHeight(tailBit);
-        scrollIndex += tailHeight;
-        mymy.scrollTop = scrollIndex;
+        scrolldex += tailHeight;
+        mymy.scrollTop = scrolldex;
       }
     }
-    prevScrollIndex = scrollIndex;
+    prevScrollIndex = scrolldex;
   })
 });
